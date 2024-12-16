@@ -26,6 +26,11 @@ void* calculate_partial_sum(void* arg) {
     return nullptr;
 }
 
+int main() {
+    // Parametry całkowania
+    long num_intervals;   // Liczba podprzedziałów
+    int num_threads;      // Liczba wątków
 
+ 
     return 0;
 }
