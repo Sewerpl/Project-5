@@ -46,6 +46,24 @@ int main() {
     std::vector<ThreadData> thread_data(num_threads);
     std::vector<pthread_t> threads(num_threads);
 
+    // Podział pracy na wątki
+    long chunk_size = num_intervals / num_threads;
+
+    auto start_time = std::chrono::high_resolution_clock::now();
+
+    for (int i = 0; i < num_threads; ++i) {
+        thread_data[i].start = i * chunk_size;
+        thread_data[i].end = (i == num_threads - 1) ? num_intervals : (i + 1) * chunk_size;
+        thread_data[i].step = step;
+        thread_data[i].partial_sum = 0.0;
+
+        if (pthread_create(&threads[i], nullptr, calculate_partial_sum, &thread_data[i]) != 0) {
+            std::cerr << "Błąd podczas tworzenia wątku." << std::endl;
+            return 1;
+        }
+    }
+
+ 
 
     return 0;
 }
