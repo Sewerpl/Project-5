@@ -73,6 +73,9 @@ int main() {
     auto end_time = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed_time = end_time - start_time;
 
+    // Obliczenie przybliżonej wartości PI
+    double pi = 4.0 * step * total_sum;
+
 
     return 0;
 }
