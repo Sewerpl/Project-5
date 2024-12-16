@@ -31,6 +31,21 @@ int main() {
     long num_intervals;   // Liczba podprzedziałów
     int num_threads;      // Liczba wątków
 
- 
+    // Wprowadzenie danych od użytkownika
+    std::cout << "Podaj liczbę podprzedziałów (np. 100000000): ";
+    std::cin >> num_intervals;
+    std::cout << "Podaj liczbę wątków (np. 4): ";
+    std::cin >> num_threads;
+
+    if (num_threads <= 0 || num_intervals <= 0) {
+        std::cerr << "Liczba wątków i podprzedziałów musi być większa od zera." << std::endl;
+        return 1;
+    }
+
+    double step = 1.0 / num_intervals;
+    std::vector<ThreadData> thread_data(num_threads);
+    std::vector<pthread_t> threads(num_threads);
+
+
     return 0;
 }
