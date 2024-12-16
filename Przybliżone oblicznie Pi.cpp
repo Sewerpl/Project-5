@@ -63,7 +63,16 @@ int main() {
         }
     }
 
- 
+    // Oczekiwanie na zakończenie pracy wątków
+    double total_sum = 0.0;
+    for (int i = 0; i < num_threads; ++i) {
+        pthread_join(threads[i], nullptr);
+        total_sum += thread_data[i].partial_sum;
+    }
+
+    auto end_time = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed_time = end_time - start_time;
+
 
     return 0;
 }
