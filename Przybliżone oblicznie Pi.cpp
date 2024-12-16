@@ -76,6 +76,9 @@ int main() {
     // Obliczenie przybliżonej wartości PI
     double pi = 4.0 * step * total_sum;
 
+    // Wyświetlenie wyników
+    std::cout << "Przybliżona wartość PI: " << pi << std::endl;
+    std::cout << "Czas obliczeń: " << elapsed_time.count() << " sekund" << std::endl;
 
     return 0;
 }
